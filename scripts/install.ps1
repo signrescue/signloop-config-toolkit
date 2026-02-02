@@ -8,9 +8,9 @@
 
 $ErrorActionPreference = "Stop"
 
-$RepoOwner = "ORG"  # TODO: Replace with actual GitHub org/user
+$RepoOwner = "signrescue"
 $RepoName = "signloop-config-toolkit"
-$DefaultInstallPath = Join-Path $env:USERPROFILE "signloop-config"
+$DefaultInstallPath = "C:\signloop-config"
 
 function Get-LatestReleaseUrl {
     $apiUrl = "https://api.github.com/repos/$RepoOwner/$RepoName/releases/latest"
@@ -86,6 +86,7 @@ $shortcutChoice = Read-Host
 
 if ($shortcutChoice -eq "y" -or $shortcutChoice -eq "Y") {
     New-DesktopShortcut -TargetPath $installPath
+    Write-Host "Tip: You can pin this shortcut to Taskbar or Start Menu, or move it anywhere." -ForegroundColor DarkGray
 }
 
 Write-Host ""

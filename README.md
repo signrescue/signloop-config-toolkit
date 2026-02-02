@@ -24,14 +24,14 @@ New users can run `welcome.bat` to walk through configuration.
 Optionally navigate to where you want it installed, then run:
 
 ```powershell
-irm https://raw.githubusercontent.com/ORG/signloop-config-toolkit/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/signrescue/signloop-config-toolkit/main/scripts/install.ps1 | iex
 ```
 
-The script will prompt to install elsewhere, like `%USERPROFILE%\signloop-config`, and optionally create a Desktop shortcut.
+The script will prompt for install location (default: `C:\signloop-config`) and optionally create a Desktop shortcut.
 
 ### Manual
 
-Download the latest release from [Releases](https://github.com/ORG/signloop-config-toolkit/releases) and extract.
+Download the latest release from [Releases](https://github.com/signrescue/signloop-config-toolkit/releases) and extract.
 
 ---
 

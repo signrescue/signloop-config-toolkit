@@ -4,5 +4,11 @@ signloop-config/bin/*.exe
 # Keep the bin directory structure
 !signloop-config/bin/.gitkeep
 
+# Generated version file (stamped during release)
+signloop-config/VERSION
+
+# Release packages
+*.zip
+
 # Claude Code local settings
 .claude/
