@@ -1,6 +1,6 @@
 # signloop-config-toolkit
 
-Portable Windows toolkit for configuring SignLoop digital signage appliances.
+This is the home repository for `signloop-config`, the configuration folder used by SignLoop digital signage appliances.
 
 ## What it does
 
@@ -19,9 +19,11 @@ New users can run `Update-SignLoop.bat` to walk through configuration.
 
 ## Download
 
-### PowerShell
+The `signloop-config` folder already exists on each SignLoop appliance and can be edited directly from a USB boot device when connected to a Windows PC.
 
-Optionally navigate to where you want it installed, then run:
+For remote configuration—or to prepare configurations on a separate workstation before sending to the appliance—download and install the toolkit here:
+
+### PowerShell
 
 ```powershell
 irm https://raw.githubusercontent.com/signrescue/signloop-config-toolkit/main/scripts/install.ps1 | iex
