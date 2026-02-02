@@ -1,7 +1,7 @@
 SIGNLOOP CONFIGURATION
 ======================
 
-To configure a new system, run welcome.bat
+To configure a new system, run Update-SignLoop.bat
 The wizard walks through each step in sequence.
 
 For advanced users:

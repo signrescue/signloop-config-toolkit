@@ -59,7 +59,7 @@ function Invoke-Step2 {
 }
 
 function Invoke-Step3 {
-    $pushScript = Join-Path $scriptDir "Push-SignLoopConfig.ps1"
+    $pushScript = Join-Path $scriptDir "Send-SignLoopChanges.ps1"
     $timeoutSeconds = 60
 
     Show-Header "Step 3 of 3: Push Config" "Deploy your configuration"

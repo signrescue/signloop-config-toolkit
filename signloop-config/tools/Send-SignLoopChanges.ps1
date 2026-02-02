@@ -4,8 +4,8 @@
 .DESCRIPTION
     Sends the signloop-config directory or specific config files to a remote recipient using croc.
 .EXAMPLE
-    Push-SignLoopConfig.ps1 my-secret-code
-    Push-SignLoopConfig.ps1 -Code my-code -All
+    Send-SignLoopChanges.ps1 my-secret-code
+    Send-SignLoopChanges.ps1 -Code my-code -All
 #>
 param (
     [Parameter(Position = 0)]
@@ -26,7 +26,7 @@ $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $ConfigRoot = Split-Path -Parent $ScriptDir
 
 function Show-Usage {
-    Write-Host "Usage: Push-SignLoopConfig.ps1 <code> [options]"
+    Write-Host "Usage: Send-SignLoopChanges.ps1 <code> [options]"
     Write-Host ""
     Write-Host "Arguments:"
     Write-Host "  code            Transfer code (min $MinCodeLength chars)"

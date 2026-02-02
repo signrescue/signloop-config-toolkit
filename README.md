@@ -15,7 +15,7 @@ Configure locally via USB, or remotely using a one-time code displayed on the ap
 | Direct USB | Insert the appliance's boot drive into a Windows PC |
 | Remote | Download toolkit, configure, send via one-time code |
 
-New users can run `welcome.bat` to walk through configuration.
+New users can run `Update-SignLoop.bat` to walk through configuration.
 
 ## Download
 

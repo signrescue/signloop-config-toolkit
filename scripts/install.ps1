@@ -44,13 +44,13 @@ Write-Host "Install location:"
 Write-Host "  [1] Current directory: $currentDir"
 Write-Host "  [2] Default: $DefaultInstallPath"
 Write-Host ""
-Write-Host "Choice [1/2]: " -NoNewline -ForegroundColor Yellow
+Write-Host "Choice [1/2, Enter=2]: " -NoNewline -ForegroundColor Yellow
 $choice = Read-Host
 
-if ($choice -eq "2") {
-    $installPath = $DefaultInstallPath
-} else {
+if ($choice -eq "1") {
     $installPath = $currentDir
+} else {
+    $installPath = $DefaultInstallPath
 }
 
 # Confirm
@@ -68,27 +68,37 @@ Invoke-WebRequest -Uri $downloadUrl -OutFile $tempZip -UseBasicParsing
 
 # Extract
 Write-Host "Extracting..." -ForegroundColor Cyan
+$tempExtract = Join-Path $env:TEMP "signloop-extract"
+if (Test-Path $tempExtract) {
+    Remove-Item $tempExtract -Recurse -Force
+}
+Expand-Archive -Path $tempZip -DestinationPath $tempExtract -Force
+
+# Move contents from nested folder to install path
+$nestedFolder = Join-Path $tempExtract "signloop-config"
 if (-not (Test-Path $installPath)) {
     New-Item -ItemType Directory -Path $installPath -Force | Out-Null
 }
-Expand-Archive -Path $tempZip -DestinationPath $installPath -Force
+Get-ChildItem -Path $nestedFolder | Copy-Item -Destination $installPath -Recurse -Force
 
 # Cleanup
 Remove-Item $tempZip -Force
+Remove-Item $tempExtract -Recurse -Force
 
 Write-Host ""
 Write-Host "Installed to: $installPath" -ForegroundColor Green
 Write-Host ""
 
 # Shortcut prompt
-Write-Host "Create Desktop shortcut? [y/N]: " -NoNewline -ForegroundColor Yellow
+Write-Host "Optional: Create a Desktop shortcut to the folder?" -ForegroundColor White
+Write-Host "(You can later pin it to Taskbar/Start Menu, move, or discard it)" -ForegroundColor DarkGray
+Write-Host "Create shortcut? [y/N]: " -NoNewline -ForegroundColor Yellow
 $shortcutChoice = Read-Host
 
 if ($shortcutChoice -eq "y" -or $shortcutChoice -eq "Y") {
     New-DesktopShortcut -TargetPath $installPath
-    Write-Host "Tip: You can pin this shortcut to Taskbar or Start Menu, or move it anywhere." -ForegroundColor DarkGray
 }
 
 Write-Host ""
-Write-Host "Done. Run welcome.bat to get started." -ForegroundColor Green
+Write-Host "Done. Run Update-SignLoop.bat to get started." -ForegroundColor Green
 Write-Host ""
