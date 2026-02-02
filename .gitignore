@@ -1,0 +1,8 @@
+# Portable binaries (downloaded at build time)
+signloop-config/bin/*.exe
+
+# Keep the bin directory structure
+!signloop-config/bin/.gitkeep
+
+# Claude Code local settings
+.claude/
